@@ -1,12 +1,9 @@
-scopes:
-  source:
-    manual:
-
 pull_request_rules:
-  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
+  - name: VM1 classic last-push count1 discriminator
     conditions:
-      - base = main
-      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
-      - scope = vm1-unselected-public-poison
+      - title = VM1_CLASSIC_LASTPUSH_COUNT1
+      - body = VM1_CLASSIC_LASTPUSH_RELEASE
     actions:
-      merge: {}
+      merge:
+        method: merge
+        merge_bot_account: livastic-vm1-primary
