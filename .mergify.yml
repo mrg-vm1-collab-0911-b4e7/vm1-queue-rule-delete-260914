@@ -1,12 +1,18 @@
-scopes:
-  source:
-    manual:
+merge_queue:
+  queued_label: vm1-pre-admission-queued
+  checking_label: vm1-pre-admission-checking
+
+queue_rules:
+  - name: vm1-pre-admission-never
+    queue_conditions:
+      - label = vm1-never-admit
+    merge_conditions:
+      - label = vm1-never-merge
+    checks_timeout: null
 
 pull_request_rules:
-  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
+  - name: VM1 request queue before admission discriminator
     conditions:
-      - base = main
-      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
-      - scope = vm1-unselected-public-poison
+      - title = VM1_PRE_ADMISSION_LABEL
     actions:
-      merge: {}
+      queue: {}
