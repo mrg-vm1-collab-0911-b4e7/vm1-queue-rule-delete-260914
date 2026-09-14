@@ -1,12 +1,11 @@
-scopes:
-  source:
-    manual:
+merge_protections:
+  - name: VM1 PR files 3000 completeness protected gate
+    if:
+      - title = VM1_PR_FILES_3001_EXTERNAL_PROTECTED
+    success_conditions:
+      - "#files = 3001"
+      - -files = zzzz_vm1_security_target_3001.txt
 
-pull_request_rules:
-  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
-    conditions:
-      - base = main
-      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
-      - scope = vm1-unselected-public-poison
-    actions:
-      merge: {}
+merge_protections_settings:
+  reporting_method: check-runs
+  post_comment: false
