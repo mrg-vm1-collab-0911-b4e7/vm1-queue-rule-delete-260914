@@ -1,12 +1,9 @@
-scopes:
-  source:
-    manual:
+queue_rules:
+  - name: vm1-ts-lifecycle
+    batch_size: 1
+    merge_method: merge
+    queue_conditions: []
+    merge_conditions:
+      - check-success = VM1_TS_NEVER_260914
 
-pull_request_rules:
-  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
-    conditions:
-      - base = main
-      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
-      - scope = vm1-unselected-public-poison
-    actions:
-      merge: {}
+pull_request_rules: []
