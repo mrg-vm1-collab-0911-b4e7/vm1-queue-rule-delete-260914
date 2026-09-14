@@ -1,14 +1,12 @@
-defaults:
-  actions:
-    label:
-      remove_all: true
+scopes:
+  source:
+    manual:
 
 pull_request_rules:
-  - name: VM1 defaults false precedence probe
+  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
     conditions:
-      - title = VM1_DEFAULTS_FALSE_PRECEDENCE
+      - base = main
+      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
+      - scope = vm1-unselected-public-poison
     actions:
-      label:
-        remove_all: false
-        add:
-          - vm1-defaults-marker
+      merge: {}
