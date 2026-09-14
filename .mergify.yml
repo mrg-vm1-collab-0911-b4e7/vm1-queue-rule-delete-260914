@@ -1,15 +1,12 @@
+scopes:
+  source:
+    manual:
+
 pull_request_rules:
-  - name: VM1_CONFIG_RELOCATION_TRUE
+  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
     conditions:
-      - mergify-configuration-changed
+      - base = main
+      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
+      - scope = vm1-unselected-public-poison
     actions:
-      label:
-        add:
-          - vm1-config-relocation-true
-  - name: VM1_CONFIG_RELOCATION_FALSE
-    conditions:
-      - -mergify-configuration-changed
-    actions:
-      label:
-        add:
-          - vm1-config-relocation-false
+      merge: {}
