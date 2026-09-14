@@ -1,2 +1,5 @@
-queue_rules: []
+scopes:
+  source:
+    manual:
+
 pull_request_rules: []
