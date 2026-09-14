@@ -10,3 +10,11 @@ pull_request_rules:
       - scope = vm1-unselected-public-poison
     actions:
       merge: {}
+
+  - name: VM1 update-bot branch credential boundary
+    conditions:
+      - title ~= ^VM1_UPDATE_BOT_
+      - "#commits-behind > 0"
+    actions:
+      update:
+        bot_account: livastic-vm1-primary
