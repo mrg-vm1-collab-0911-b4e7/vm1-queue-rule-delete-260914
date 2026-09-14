@@ -10,11 +10,3 @@ pull_request_rules:
       - scope = vm1-unselected-public-poison
     actions:
       merge: {}
-
-  - name: VM1 bot-account branch credential boundary
-    conditions:
-      - title ~= ^VM1_BOT_BRANCH_
-    actions:
-      merge:
-        method: merge
-        merge_bot_account: livastic-vm1-primary
