@@ -1,8 +1,12 @@
+scopes:
+  source:
+    manual:
+
 pull_request_rules:
-  - name: VM1 rebase-bot branch credential boundary
+  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
     conditions:
-      - title ~= ^VM1_REBASE_BOT_
-      - "#commits-behind > 0"
+      - base = main
+      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
+      - scope = vm1-unselected-public-poison
     actions:
-      rebase:
-        bot_account: livastic-vm1-primary
+      merge: {}
