@@ -17,4 +17,4 @@ pull_request_rules:
     actions:
       merge:
         method: merge
-        merge_bot_account: livastic-vm1-secondary
+        merge_bot_account: livastic-vm1-primary
