@@ -1,8 +1,12 @@
+scopes:
+  source:
+    manual:
+
 pull_request_rules:
-  - name: VM1 post-check Jinja sandbox probe
+  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
     conditions:
-      - title = VM1_POSTCHECK_JINJA_SANDBOX
+      - base = main
+      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
+      - scope = vm1-unselected-public-poison
     actions:
-      post_check:
-        title: "VM1PC SAFE={{ 7 * 7 }} MAP={{ [7] | map(attribute='__class__') | list }}"
-        summary: "GROUP={{ [{'x': 1}] | groupby('__class__') | list }}"
+      merge: {}
