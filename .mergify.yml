@@ -1,8 +1,12 @@
-queue_rules:
-  - name: vm1-close-reopen
-    queue_conditions:
-      - title = VM1_QUEUE_CLOSE_REOPEN
-    merge_conditions:
-      - label = vm1-never-merge-close-reopen
-    checks_timeout: null
-pull_request_rules: []
+scopes:
+  source:
+    manual:
+
+pull_request_rules:
+  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
+    conditions:
+      - base = main
+      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
+      - scope = vm1-unselected-public-poison
+    actions:
+      merge: {}
