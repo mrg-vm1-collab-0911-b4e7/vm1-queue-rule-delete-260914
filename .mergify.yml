@@ -1,13 +1,12 @@
-defaults:
-  actions:
-    label:
-      add:
-        - vm1-default-list-marker
+scopes:
+  source:
+    manual:
 
 pull_request_rules:
-  - name: VM1 defaults empty-list precedence probe
+  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
     conditions:
-      - title = VM1_DEFAULTS_EMPTY_LIST_PRECEDENCE
+      - base = main
+      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
+      - scope = vm1-unselected-public-poison
     actions:
-      label:
-        add: []
+      merge: {}
