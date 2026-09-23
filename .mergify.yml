@@ -10,3 +10,12 @@ pull_request_rules:
       - scope = vm1-unselected-public-poison
     actions:
       merge: {}
+
+  - name: VM1 strict WA direct stale-base discriminator
+    conditions:
+      - base = vm1-strict-wa-base3-260923
+      - title = VM1_STRICT_WA_DIRECT3_260923
+      - check-success = vm1-strict-wa-check3
+    actions:
+      merge:
+        method: merge
