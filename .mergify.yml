@@ -1,6 +1,8 @@
 scopes:
   source:
     manual:
+  capacities:
+    '@acme/*': 1
 
 pull_request_rules:
   - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
@@ -19,3 +21,18 @@ pull_request_rules:
     actions:
       merge:
         method: merge
+
+merge_queue:
+  mode: parallel
+  max_parallel_checks: 2
+
+queue_rules:
+  - name: vm1-capglob-260925
+    merge_method: squash
+    batch_size: 1
+    queue_conditions:
+      - base = vm1-capglob-base-260925
+      - title ~= ^VM1_CAPGLOB_[AB]_260925$
+    merge_conditions:
+      - check-success = queue-hold
+      - check-success = vm1-capglob-never-260925
