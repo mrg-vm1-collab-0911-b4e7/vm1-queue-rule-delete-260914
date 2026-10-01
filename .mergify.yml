@@ -39,4 +39,4 @@ queue_rules:
     conflict_resolvers:
       - paths:
           - resolver-generation.txt
-        strategy: prefer-theirs
+        strategy: prefer-ours
