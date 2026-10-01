@@ -36,7 +36,3 @@ queue_rules:
     batch_size: 2
     batch_max_wait_time: 1 minute
     merge_method: merge-batch
-    conflict_resolvers:
-      - paths:
-          - resolver-removal.txt
-        strategy: prefer-theirs
