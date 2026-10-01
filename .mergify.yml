@@ -1,9 +1,6 @@
 scopes:
   source:
-    files:
-      resolver-auto:
-        include:
-          - resolver-auto.txt
+    manual:
 
 pull_request_rules:
   - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
@@ -22,21 +19,3 @@ pull_request_rules:
     actions:
       merge:
         method: merge
-
-merge_queue:
-  mode: parallel
-  max_parallel_checks: 2
-
-queue_rules:
-  - name: vm1-resolver-auto-261002
-    queue_conditions:
-      - base = main
-    merge_conditions:
-      - check-success = vm1-resolver-sharedgen-auto
-    batch_size: 2
-    batch_max_wait_time: 1 minute
-    merge_method: merge-batch
-    conflict_resolvers:
-      - paths:
-          - resolver-auto.txt
-        strategy: prefer-theirs
