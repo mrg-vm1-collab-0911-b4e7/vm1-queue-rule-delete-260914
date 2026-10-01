@@ -1,6 +1,9 @@
 scopes:
   source:
-    manual:
+    files:
+      resolver:
+        include:
+          - resolver-generation.txt
 
 pull_request_rules:
   - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
