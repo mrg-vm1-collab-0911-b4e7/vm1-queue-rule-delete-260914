@@ -1,3 +1,10 @@
+scopes:
+  source:
+    files:
+      resolver:
+        include:
+          - resolver-auto-ci.txt
+
 merge_queue:
   mode: parallel
   max_parallel_checks: 2
