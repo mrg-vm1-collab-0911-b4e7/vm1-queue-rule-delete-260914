@@ -1,21 +1,17 @@
-scopes:
-  source:
-    manual:
+merge_queue:
+  mode: parallel
+  max_parallel_checks: 2
 
-pull_request_rules:
-  - name: VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_MERGE
-    conditions:
-      - base = main
-      - title = VM1_UNSELECTED_PUBLIC_LATENT_SCOPE_PROBE
-      - scope = vm1-unselected-public-poison
-    actions:
-      merge: {}
-
-  - name: VM1 strict WA direct stale-base discriminator
-    conditions:
-      - base = vm1-strict-wa-base3-260923
-      - title = VM1_STRICT_WA_DIRECT3_260923
-      - check-success = vm1-strict-wa-check3
-    actions:
-      merge:
-        method: merge
+queue_rules:
+  - name: vm1-resolver-auto-finalizer-261002
+    queue_conditions:
+      - label = vm1-resolver-auto-261002
+    merge_conditions:
+      - check-success = vm1-resolver-auto-ci
+    batch_size: 2
+    batch_max_wait_time: 1 minute
+    merge_method: merge-batch
+    conflict_resolvers:
+      - paths:
+          - resolver-auto-ci.txt
+        strategy: prefer-theirs
