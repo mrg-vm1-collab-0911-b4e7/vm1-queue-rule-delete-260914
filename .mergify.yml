@@ -9,6 +9,11 @@ merge_queue:
   mode: parallel
   max_parallel_checks: 2
 
+conflict_resolvers:
+  - package-manager: npm
+    directories:
+      - /exporder
+
 queue_rules:
   - name: vm1-resolver-auto-finalizer-261002
     queue_conditions:
@@ -22,3 +27,14 @@ queue_rules:
       - paths:
           - resolver-auto-ci.txt
         strategy: prefer-theirs
+
+  - name: vm1-exporder-261009
+    queue_conditions:
+      - base = vm1-exporder-base-261009
+      - title ~= ^VM1_EXPORDER_[AB]_261009$
+    autoqueue: true
+    merge_conditions:
+      - check-success = vm1-exporder-never-261009
+    batch_size: 2
+    batch_max_wait_time: 5 minutes
+    merge_method: merge-batch
